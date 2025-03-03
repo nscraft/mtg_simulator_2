@@ -1,7 +1,7 @@
 class GameState:
     def __init__(self, kind: str, players: list):
         self.kind = kind  # 'commander' or 'standard'
-        self.players = []
+        self.players = players
         self.num_players = len(self.players)
         assert self.num_players > 0, 'Not enough players'
         self.turn_structure = {
