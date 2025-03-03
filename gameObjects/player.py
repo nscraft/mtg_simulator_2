@@ -1,3 +1,4 @@
+
 class Player:
     def __init__(self, player_num: int, name: str, life_total: int, max_hand_size: int, deck: list):
         self.turn_num = 0
