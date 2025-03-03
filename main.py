@@ -5,6 +5,7 @@ from get_data import get_data
 class MTGSim:
     def __init__(self):
         self.data = {}
+        self.saved_player_names = []
         print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
@@ -16,20 +17,25 @@ class MTGSim:
             # for each file, update self.configuration with the contents of the file
             for file in data_files:
                 self.data.update(get_data(file.split('.')[0]))
+            self.saved_player_names.append(self.get_saved_player_names())
+
+    def get_saved_player_names(self) -> list:
+        data = self.data.get('players', [])
+        return [player['name'] for player in data]
 
     def console_menu_loop(self):
         while True:
             print("\nMain Menu:"
-                  "1. Create Player",  # todo: develop modify player option
-                  "2. Load Deck",  # todo: develop edit deck option
-                  "3. Print Report for Deck",
-                  "4. Run Game",
-                  "5. Exit")
+                  "\n1. Create Player",  # todo: develop modify player option
+                  "\n2. Load Deck",  # todo: develop edit deck option
+                  "\n3. Print Report for Deck",
+                  "\n4. Run Game",
+                  "\n5. Exit")
             choice = input("Enter your choice (1-4):")
 
             if choice == '1':
                 print("\nSaved Players:"
-                      f"{self.data['players']}")
+                      f"\n{self.saved_player_names}")
                 print("\nEnter your new player's name:")
                 player_name = input()
                 # if player name already exists, ask for a new name
@@ -37,8 +43,9 @@ class MTGSim:
                     print("Player already exists. Please enter a new name.")
                 else:
                     self.create_player(player_name)
+                    self.get_saved_player_names()
                     print("\nSaved Players:"
-                          f"{self.data['players']}")
+                          f"{self.saved_player_names}")
                     break
 
             elif choice == '2':
@@ -56,8 +63,8 @@ class MTGSim:
                 }
                 while True:
                     print("\nGame Mode:"
-                          "1. Commander",
-                          "2. Standard",
+                          "\n1. Commander",
+                          "\n2. Standard",
                           )
                     game_mode = input("Enter your choice (1-2):")
                     if game_mode == '1':
@@ -71,16 +78,16 @@ class MTGSim:
 
                     num_players = input("Enter the number of players:")
                     if num_players.isnumeric():
-                        int(num_players)
+                        num_players = int(num_players)
                         settings.update({'num_players': num_players})
                     else:
                         print("Invalid input. Please enter a number.")
                         continue
                     print("\nSaved Players:"
-                          f"{self.data['players']}")
+                          f"\n{self.saved_player_names}")
                     for i in range(settings['num_players']):
                         player = input(f"Enter player {i} name:")
-                        if player in self.data['players']:
+                        if player in self.saved_player_names:
                             settings['players'].update({f'player_{i}': player})
                         else:
                             print("Player does not exist.")
@@ -88,7 +95,7 @@ class MTGSim:
                     self.start_game(
                         settings['game_mode'],
                         settings['players'],
-                        )
+                    )
 
             elif choice == '4':
                 print("Goodbye")
@@ -105,6 +112,8 @@ class MTGSim:
             'score': 0
         }
         self.data['players'].append(new_player)
+        with open('data/players.json', 'w') as f:
+            f.write(self.data['players'])
 
     def load_deck(self):
         pass
@@ -119,4 +128,5 @@ class MTGSim:
 if __name__ == "__main__":
     mtg_sim = MTGSim()
     mtg_sim.set_data()
+    mtg_sim.get_saved_player_names()
     mtg_sim.console_menu_loop()
