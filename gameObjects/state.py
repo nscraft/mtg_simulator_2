@@ -22,8 +22,8 @@ class GameState:
         self.step = str
 
     def players_playing(self):
+        print(f"{self.num_players} players in game")
         if self.num_players == 0:
-            print("0 players in game")
             return False
         else:
             return True
@@ -52,4 +52,3 @@ class GameState:
         else:
             self.step = list(self.turn_structure.keys())[step_index + 1]
             self.phase = self.turn_structure[self.step]
-

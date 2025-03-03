@@ -9,8 +9,8 @@ class TestGameState(unittest.TestCase):
 
     def test_players_playing(self):
         self.assertTrue(self.game_state.players_playing())
-
-        self.assertFalse(GameState('test', []).players_playing())
+        self.game_state.num_players = 0
+        self.assertFalse(self.game_state.players_playing())
 
     def test_remove_player(self):
         self.game_state.remove_player('player1')
