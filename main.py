@@ -79,6 +79,15 @@ class MTGSim:
         }
         self.data['players'].append(new_player)
 
+    def load_deck(self):
+        pass
+
+    def print_report(self):
+        pass
+
+    def start_game(self, game_mode, num_players, num_games):
+        pass
+
 
 if __name__ == "__main__":
     mtg_sim = MTGSim()
