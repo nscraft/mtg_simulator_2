@@ -1,0 +1,16 @@
+{
+  "players": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "decks": [],
+      "score": 50
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "decks": [],
+      "score": 100
+    }
+  ]
+}
