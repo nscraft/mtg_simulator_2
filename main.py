@@ -1,4 +1,5 @@
 import os
+import json
 from get_data import get_data
 
 
@@ -113,7 +114,7 @@ class MTGSim:
         }
         self.data['players'].append(new_player)
         with open('data/players.json', 'w') as f:
-            f.write(self.data['players'])
+            json.dump(self.data, f, indent=4)
 
     def load_deck(self):
         pass
