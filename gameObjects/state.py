@@ -1,4 +1,3 @@
-
 class GameState:
     def __init__(self, kind: str, players: list):
         self.kind = kind  # 'commander' or 'standard'
@@ -6,31 +5,17 @@ class GameState:
         self.num_players = len(self.players)
         assert self.num_players > 0, 'Not enough players'
         self.turn_structure = {
-            'Phase': ['Beginning Phase',
-                      'Main Phase',
-                      'Combat Phase',
-                      'Ending Phase'],
-            'Step': ['Untap Step',
-                     'Upkeep Step',
-                     'Draw Step',
-                     'Beginning of Combat Step',
-                     'Declare Attackers Step',
-                     'Declare Blockers Step',
-                     'Combat Damage Step',
-                     'End of Combat Step'
-                     'End Step',
-                     'Cleanup Step'],
-            'Beginning Phase': ['Untap Step',
-                                'Upkeep Step',
-                                'Draw Step'],
-            'Main Phase': [],
-            'Combat Phase': ['Beginning of Combat Step',
-                             'Declare Attackers Step',
-                             'Declare Blockers Step',
-                             'Combat Damage Step',
-                             'End of Combat Step'],
-            'Ending Phase': ['End Step',
-                             'Cleanup Step'],
+            'Untap Step': 'Beginning Phase',
+            'Upkeep Step': 'Beginning Phase',
+            'Draw Step': 'Beginning Phase',
+            'Main Phase': ['Pre-combat Main Phase', 'Post-combat Main Phase'],
+            'Beginning of Combat Step': 'Combat Phase',
+            'Declare Attackers Step': 'Combat Phase',
+            'Declare Blockers Step': 'Combat Phase',
+            'Combat Damage Step': 'Combat Phase',
+            'End of Combat Step': 'Combat Phase',
+            'End Step': 'Ending Phase',
+            'Cleanup Step': 'Ending Phase',
         }
         self.phase = str
         self.step = str
@@ -54,15 +39,19 @@ class GameState:
         When Player.start_turn() called, the player's turn_num attribute is incremented by 1 and GamesState.phase is
          set to 'Beginning Phase'.
         """
-        current_phase = self.phase
-        current_step = self.step
-        steps_in_phase = self.turn_structure[current_phase]
-        assert current_step in steps_in_phase, 'Invalid step'
-        step_index = steps_in_phase.index(current_step)
-        if step_index == len(steps_in_phase) - 1:
-            phase_index = list(self.turn_structure.keys()).index(current_phase)
-            next_phase = list(self.turn_structure.keys())[phase_index + 1]
-            self.phase = next_phase
-            self.step = self.turn_structure[next_phase][0]
+        current_phase = self.phase  # example 'Combat Phase'
+        current_step = self.step  # example 'Draw Step' (treats 'Main Phase' as a step)
+        # find the index of the current step in the turn_structure
+        step_index = list(self.turn_structure.keys()).index(current_step)
+        # set self.step to the next step in the turn_structure
+        if current_step == 'Cleanup Step':
+            self.step = 'Untap Step'
         else:
-            self.step = steps_in_phase[step_index + 1]
+            self.step = list(self.turn_structure.keys())[step_index + 1]
+        # set self.phase to the value of the self.step key in the turn_structure
+        # if the step is 'Main Phase', set self.phase to the next value in the list
+        if self.step == 'Main Phase':
+            self.phase = self.turn_structure[self.step][+1]
+        else:
+            self.phase = self.turn_structure[self.step]
+
