@@ -19,7 +19,7 @@ class MTGSim:
 
     def console_menu_loop(self):
         while True:
-            print("\nMenu:"
+            print("\nMain Menu:"
                   "1. Create Player",  # todo: develop modify player option
                   "2. Load Deck",  # todo: develop edit deck option
                   "3. Print Report for Deck",
@@ -48,20 +48,47 @@ class MTGSim:
                 self.print_report()
 
             elif choice == '4':
+                settings = {
+                    'game_mode': None,
+                    'num_players': None,
+                    'players': {},
+                    'num_games': int,
+                }
                 while True:
                     print("\nGame Mode:"
                           "1. Commander",
                           "2. Standard",
-                          "3. go back")
-                    choice = input("Enter your choice (1-3):")
-                    if choice == '1':
-                        self.start_game('Commander')
-                    elif choice == '2':
-                        self.start_game('Standard')
-                    elif choice == '3':
-                        break
+                          )
+                    game_mode = input("Enter your choice (1-2):")
+                    if game_mode == '1':
+                        game_mode = 'Commander'
+                    elif game_mode == '2':
+                        game_mode = 'Standard'
                     else:
                         print("Invalid choice. Please choose again.")
+                        continue
+                    settings.update({'game_mode': game_mode})
+
+                    num_players = input("Enter the number of players:")
+                    if num_players.isnumeric():
+                        int(num_players)
+                        settings.update({'num_players': num_players})
+                    else:
+                        print("Invalid input. Please enter a number.")
+                        continue
+                    print("\nSaved Players:"
+                          f"{self.data['players']}")
+                    for i in range(settings['num_players']):
+                        player = input(f"Enter player {i} name:")
+                        if player in self.data['players']:
+                            settings['players'].update({f'player_{i}': player})
+                        else:
+                            print("Player does not exist.")
+                            continue
+                    self.start_game(
+                        settings['game_mode'],
+                        settings['players'],
+                        )
 
             elif choice == '4':
                 print("Goodbye")
@@ -85,7 +112,7 @@ class MTGSim:
     def print_report(self):
         pass
 
-    def start_game(self, game_mode, num_players, num_games):
+    def start_game(self, game_mode: str, players: dict):
         pass
 
 
