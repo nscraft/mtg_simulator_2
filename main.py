@@ -5,10 +5,19 @@ from UI import consol_ui
 
 
 class MTGSim:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(MTGSim, cls).__new__(cls, *args, **kwargs)
+        return cls._instance
+
     def __init__(self):
-        self.data = {}
-        self.observers = []
-        print("~~Welcome to MTG_Sim!~~")
+        if not hasattr(self, 'initialized'):  # Ensure __init__ is only called once
+            self.data = {}
+            self.observers = []
+            self.initialized = True
+            print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
         print("Updating data...")

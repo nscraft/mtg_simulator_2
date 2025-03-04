@@ -1,4 +1,3 @@
-import get_data
 
 
 class saveDataObserver:
