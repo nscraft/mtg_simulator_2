@@ -24,7 +24,7 @@ class MTGSim:
         data = self.data.get('players', [])
         return [player['name'] for player in data]
 
-    def console_menu_loop(self):
+    def main_console_menu(self):
         while True:
             print("\nMain Menu:"
                   "\n1. Create Player",  # todo: develop modify player option
@@ -33,76 +33,78 @@ class MTGSim:
                   "\n4. Run Game",
                   "\n5. Exit")
             choice = input("Enter your choice (1-5):")
-
             if choice == '1':
-                print("\nSaved Players:"
-                      f"\n{self.saved_player_names}")
-                print("\nEnter your new player's name:")
-                player_name = input()
-                # if player name already exists, ask for a new name
-                if player_name in self.saved_player_names:
-                    print("Player already exists. Please enter a new name.")
-                else:
-                    self.create_player(player_name)
-                    self.set_data()
-                    print("\nSaved Players:"
-                          f"\n{self.saved_player_names}")
-                    break
-
+                self.create_player_menu()
             elif choice == '2':
-                self.load_deck()
-
+                self.load_deck_menu()
             elif choice == '3':
-                self.print_report()
-
+                self.print_report_menu()
             elif choice == '4':
-                settings = {
-                    'game_mode': None,
-                    'num_players': None,
-                    'players': {},
-                    'num_games': int,
-                }
-                while True:
-                    print("\nGame Mode:"
-                          "\n1. Commander",
-                          "\n2. Standard",
-                          )
-                    game_mode = input("Enter your choice (1-2):")
-                    if game_mode == '1':
-                        game_mode = 'Commander'
-                    elif game_mode == '2':
-                        game_mode = 'Standard'
-                    else:
-                        print("Invalid choice. Please choose again.")
-                        continue
-                    settings.update({'game_mode': game_mode})
-
-                    num_players = input("Enter the number of players:")
-                    if num_players.isnumeric():
-                        num_players = int(num_players)
-                        settings.update({'num_players': num_players})
-                    else:
-                        print("Invalid input. Please enter a number.")
-                        continue
-                    print("\nSaved Players:"
-                          f"\n{self.saved_player_names}")
-                    for i in range(settings['num_players']):
-                        player = input(f"Enter player {i} name:")
-                        if player in self.saved_player_names:
-                            settings['players'].update({f'player_{i}': player})
-                        else:
-                            print("Player does not exist.")
-                            continue
-                    self.start_game(
-                        settings['game_mode'],
-                        settings['players'],
-                    )
-
+                self.run_game_menu()
             elif choice == '5':
                 print("Goodbye")
                 break
             else:
                 print("Invalid choice. Please choose again.")
+
+    def create_player_menu(self):
+        print("\nSaved Players:"
+              f"\n{self.saved_player_names}")
+        print("\nEnter your new player's name:")
+        player_name = input()
+        # if player name already exists, ask for a new name
+        if player_name in self.saved_player_names:
+            print("Player already exists. Please enter a new name.")
+        else:
+            self.create_player(player_name)
+            self.set_data()
+            print("\nSaved Players:"
+                  f"\n{self.saved_player_names}")
+            self.main_console_menu()
+
+    def load_deck_menu(self):
+        settings = {
+            'game_mode': None,
+            'num_players': None,
+            'players': {},
+            'num_games': int,
+        }
+        while True:
+            print("\nGame Mode:"
+                  "\n1. Commander",
+                  "\n2. Standard",
+                  )
+            game_mode = input("Enter your choice (1-2):")
+            if game_mode == '1':
+                game_mode = 'Commander'
+            elif game_mode == '2':
+                game_mode = 'Standard'
+            else:
+                print("Invalid choice. Please choose again.")
+                continue
+            settings.update({'game_mode': game_mode})
+
+            num_players = input("Enter the number of players:")
+            if num_players.isnumeric():
+                num_players = int(num_players)
+                settings.update({'num_players': num_players})
+            else:
+                print("Invalid input. Please enter a number.")
+                continue
+            print("\nSaved Players:"
+                  f"\n{self.saved_player_names}")
+            for i in range(settings['num_players']):
+                player = input(f"Enter player {i} name:")
+                if player in self.saved_player_names:
+                    settings['players'].update({f'player_{i}': player})
+                else:
+                    print("Player does not exist.")
+                    continue
+            self.start_game(
+                settings['game_mode'],
+                settings['players'],
+            )
+        self.main_console_menu()
 
     def create_player(self, player_name):
         max_player_id = self.data['players'][-1]['id']
@@ -133,4 +135,4 @@ if __name__ == "__main__":
     mtg_sim = MTGSim()
     mtg_sim.set_data()
     mtg_sim.get_saved_player_names()
-    mtg_sim.console_menu_loop()
+    mtg_sim.main_consol_menue()
