@@ -4,6 +4,7 @@ from saveData.writeplayer import WritePlayer
 
 class consoleNave:
     def __init__(self, singleton_mtg_sim):
+        self.singleton_mtg_sim = singleton_mtg_sim
         self.data = singleton_mtg_sim.data
         self.saved_player_names = self.get_saved_player_names()
         user_choice = None
@@ -44,7 +45,7 @@ class consoleNave:
         if player_name in self.saved_player_names:
             print("Player already exists. Please enter a new name.")
         else:
-            WritePlayer(self.data).add_player(player_name)
+            WritePlayer(self.singleton_mtg_sim).add_player(player_name)
             print("\nSaved Players:"
                   f"\n{self.saved_player_names}")
             self.main_console_menu()

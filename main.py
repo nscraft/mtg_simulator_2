@@ -7,7 +7,7 @@ from UI import consol_ui
 class MTGSim:
     def __init__(self):
         self.data = {}
-        self.saveDataObserver = saveDataObserver()
+        self.saveDataObserver = saveDataObserver(self)
         print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
