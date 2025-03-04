@@ -32,7 +32,7 @@ class MTGSim:
                   "\n3. Print Report for Deck",
                   "\n4. Run Game",
                   "\n5. Exit")
-            choice = input("Enter your choice (1-4):")
+            choice = input("Enter your choice (1-5):")
 
             if choice == '1':
                 print("\nSaved Players:"
@@ -40,7 +40,7 @@ class MTGSim:
                 print("\nEnter your new player's name:")
                 player_name = input()
                 # if player name already exists, ask for a new name
-                if player_name in self.data['players']:
+                if player_name in self.saved_player_names:
                     print("Player already exists. Please enter a new name.")
                 else:
                     self.create_player(player_name)
@@ -98,7 +98,7 @@ class MTGSim:
                         settings['players'],
                     )
 
-            elif choice == '4':
+            elif choice == '5':
                 print("Goodbye")
                 break
             else:
