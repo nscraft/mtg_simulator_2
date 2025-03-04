@@ -7,7 +7,7 @@ from UI import consol_ui
 class MTGSim:
     def __init__(self):
         self.data = {}
-        self.saveDataObserver = saveDataObserver(self)
+        self.observers = []
         print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
@@ -21,6 +21,10 @@ class MTGSim:
             for file in data_files:
                 self.data.update(get_data(file.split('.')[0]))
 
+    def add_observer(self):
+        observer = saveDataObserver(self)
+        self.observers.append(observer)
+
     def start_ui(self):
         ui = consol_ui.consoleNave(self)
         ui.main_console_menu()
@@ -29,4 +33,5 @@ class MTGSim:
 if __name__ == "__main__":
     mtg_sim = MTGSim()
     mtg_sim.set_data()
+    mtg_sim.add_observer()
     mtg_sim.start_ui()

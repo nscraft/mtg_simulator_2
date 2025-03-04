@@ -4,7 +4,7 @@ import json
 class WritePlayer:
     def __init__(self, singleton_mtg_sim):
         self.data = singleton_mtg_sim.data
-        self.saveDataObserver = singleton_mtg_sim.saveDataObserver
+        self.observers = singleton_mtg_sim.observers
 
     def add_player(self, player_name: str):
         max_player_id = self.data['players'][-1]['id']
@@ -20,12 +20,15 @@ class WritePlayer:
         }
         with open('data/players.json', 'w') as f:
             json.dump(player_file_content, f, indent=4)
-        self.saveDataObserver.notify('players.json')
+        for each in self.observers:
+            each.notify('players.json')
 
     def remove_player(self, player_name):
-        self.saveDataObserver.notify('players.json')
+        for each in self.observers:
+            each.notify('players.json')
         pass
 
     def update_player(self, player_name, *args):
-        self.saveDataObserver.notify('players.json')
+        for each in self.observers:
+            each.notify('players.json')
         pass
