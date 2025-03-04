@@ -21,4 +21,4 @@ class saveDataObserver:
         self.get_state()
 
     def get_state(self):
-        self.singleton_mtg_sim.set_data()
+        self.singleton_mtg_sim._set_data()

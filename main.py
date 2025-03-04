@@ -30,17 +30,20 @@ class MTGSim:
             for file in data_files:
                 self.data.update(get_data(file.split('.')[0]))
 
-    def add_observer(self):
+    def _add_observer(self):
         observer = saveDataObserver(self)
         self.observers.append(observer)
 
-    def start_ui(self):
+    def _start_ui(self):
         ui = consol_ui.consoleNave(self)
         ui.main_console_menu()
+
+    def run(self):
+        self.set_data()
+        self._add_observer()
+        self._start_ui()
 
 
 if __name__ == "__main__":
     mtg_sim = MTGSim()
-    mtg_sim.set_data()
-    mtg_sim.add_observer()
-    mtg_sim.start_ui()
+    mtg_sim.run()
