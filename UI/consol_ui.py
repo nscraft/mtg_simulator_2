@@ -46,7 +46,7 @@ class consoleNave:
             print("Player already exists. Please enter a new name.")
         else:
             WritePlayer(self.singleton_mtg_sim).add_player(player_name)
-            self.get_saved_player_names()
+            self.saved_player_names = self.get_saved_player_names()
             print("\nSaved Players:"
                   f"\n{self.saved_player_names}")
             self.main_console_menu()
