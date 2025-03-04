@@ -1,5 +1,5 @@
 from events import game
-from factory.playerFactory import PlayerFactory
+from saveData.writeplayer import WritePlayer
 
 
 class consoleNave:
@@ -44,7 +44,7 @@ class consoleNave:
         if player_name in self.saved_player_names:
             print("Player already exists. Please enter a new name.")
         else:
-            PlayerFactory().create_player(player_name)
+            WritePlayer(self.data).add_player(player_name)
             print("\nSaved Players:"
                   f"\n{self.saved_player_names}")
             self.main_console_menu()
