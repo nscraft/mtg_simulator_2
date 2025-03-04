@@ -125,20 +125,21 @@ class MTGSim:
                     continue
                 break
         # choose decks
-        for _ in settings['players']:
-            # get player deck names
-            available_decks = self.data['players'][_].get('decks', [])
-            print(f"\nAvailable decks for {settings['players'][_]}:"
-                  f"\n{available_decks}")
-            print(f"\nChoose a deck for {settings['players'][_]}:")
-            while True:
-                deck = input()
-                if deck in available_decks:
-                    settings['players'][_].update({'deck': deck})
-                else:
-                    print("Deck not found.")
-                    continue
-                break
+        for player_key, player_name in settings['players'].items():
+            player_data = next((player for player in self.data['players'] if player['name'] == player_name), None)
+            if player_data:
+                available_decks = player_data.get('decks', [])
+                print(f"\nAvailable decks for {player_name}:"
+                      f"\n{available_decks}")
+                print(f"\nChoose a deck for {player_name}:")
+                while True:
+                    deck = input()
+                    if deck in available_decks:
+                        settings['players'][player_key] = {'name': player_name, 'deck': deck}
+                    else:
+                        print("Deck not found.")
+                        continue
+                    break
         print("\nGame settings:"
               f"\nGame Mode: {settings['game_mode']}"
               f"\nNumber of Players: {settings['num_players']}"
