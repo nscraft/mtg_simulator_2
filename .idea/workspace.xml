@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1e44c17f-007b-44ff-bcbd-eb43451c80e7" name="Changes" comment="initial commit" />
+    <list default="true" id="1e44c17f-007b-44ff-bcbd-eb43451c80e7" name="Changes" comment="initial commit">
+      <change afterPath="$PROJECT_DIR$/saveData/observer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI/consol_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/consol_ui.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/saveData/writeplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/saveData/writeplayer.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,28 +35,58 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in test_state.py.executor": "Run",
-    "Python tests.Unittests in bin.executor": "Run",
-    "Python.consol_ui.executor": "Run",
-    "Python.game.executor": "Run",
-    "Python.main.executor": "Run",
-    "Python.scratch.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/cleandeceit/Projects/PycharmProjects/mtg_simulator_2/data/_backup",
-    "settings.editor.selected.configurable": "project.propDebugger"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in test_state.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Unittests in bin.executor&quot;: &quot;Run&quot;,
+    &quot;Python.consol_ui.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/cleandeceit/Projects/PycharmProjects/mtg_simulator_2/data/_backup&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cleandeceit\Projects\PycharmProjects\mtg_simulator_2\data\_backup" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\cleandeceit\Projects\PycharmProjects\mtg_simulator_2\factory" />
       <recent name="C:\Users\cleandeceit\Projects\PycharmProjects\mtg_simulator_2" />
       <recent name="C:\Users\cleandeceit\Projects\PycharmProjects\mtg_simulator_2\gameObjects" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="mtg_simulator_2" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -300,7 +336,47 @@
       <option name="project" value="LOCAL" />
       <updated>1741053889999</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741097253764</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1741097253764</updated>
+    </task>
+    <task id="LOCAL-00031" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741097366791</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1741097366791</updated>
+    </task>
+    <task id="LOCAL-00032" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741097443327</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1741097443327</updated>
+    </task>
+    <task id="LOCAL-00033" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741098681569</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1741098681569</updated>
+    </task>
+    <task id="LOCAL-00034" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741100430681</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1741100430681</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

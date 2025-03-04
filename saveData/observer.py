@@ -18,6 +18,7 @@ class saveDataObserver:
                                  'cards.json',
                                  ]
         assert save_dat_file in data_files_of_concern, "Invalid data file."
+        print(f"Observer Notified: Data file {save_dat_file} has been updated.")
         self.get_state()
 
     def get_state(self):

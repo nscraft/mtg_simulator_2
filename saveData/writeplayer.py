@@ -20,12 +20,12 @@ class WritePlayer:
         }
         with open('data/players.json', 'w') as f:
             json.dump(player_file_content, f, indent=4)
-        self.saveDataObserver().notify('players.json')
+        self.saveDataObserver.notify('players.json')
 
     def remove_player(self, player_name):
-        self.saveDataObserver().notify('players.json')
+        self.saveDataObserver.notify('players.json')
         pass
 
     def update_player(self, player_name, *args):
-        self.saveDataObserver().notify('players.json')
+        self.saveDataObserver.notify('players.json')
         pass

@@ -11,6 +11,7 @@ class MTGSim:
         print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
+        print("Updating data...")
         # find all json files in the data directory
         data_files = [file for file in os.listdir('data') if file.endswith('.json')]
         if not data_files:
