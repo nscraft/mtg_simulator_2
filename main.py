@@ -141,4 +141,4 @@ if __name__ == "__main__":
     mtg_sim = MTGSim()
     mtg_sim.set_data()
     mtg_sim.get_saved_player_names()
-    mtg_sim.main_consol_menue()
+    mtg_sim.main_console_menu()
