@@ -46,6 +46,7 @@ class MTGSim:
                 exit()
             else:
                 print("Invalid choice. Please choose again.")
+            break
 
     def create_player_menu(self):
         print("\nSaved Players:"
@@ -91,13 +92,15 @@ class MTGSim:
             game_mode = input("Enter your choice (1-2):")
             if game_mode == '1':
                 game_mode = 'Commander'
+                settings.update({'game_mode': game_mode})
             elif game_mode == '2':
                 game_mode = 'Standard'
+                settings.update({'game_mode': game_mode})
             else:
                 print("Invalid choice. Please choose again.")
                 continue
-            settings.update({'game_mode': game_mode})
-
+            break
+        while True:
             num_players = input("Enter the number of players:")
             if num_players.isnumeric():
                 num_players = int(num_players)
@@ -105,18 +108,23 @@ class MTGSim:
             else:
                 print("Invalid input. Please enter a number.")
                 continue
-            while True:
-                print("\nSaved Players:"
-                      f"\n{self.saved_player_names}")
-                for i in range(settings['num_players']):
-                    player = input(f"Enter player {i + 1} name:")
-                    if player in self.saved_player_names:
-                        settings['players'].update({f'player_{i + 1}': player})
-                    else:
-                        print("Player does not exist.")
-                        continue
-                break
             break
+        print("\nSaved Players:"
+              f"\n{self.saved_player_names}")
+        for i in range(settings['num_players']):
+            while True:
+                player = input(f"Enter player {i + 1} name:")
+                if player in self.saved_player_names:
+                    settings['players'].update({f'player_{i + 1}': player})
+                else:
+                    print("Player does not exist.")
+                    continue
+                break
+        print("\nGame settings:"
+              f"\nGame Mode: {settings['game_mode']}"
+              f"\nNumber of Players: {settings['num_players']}"
+              f"\nPlayers: {settings['players']}")
+        print("Starting game...")
         self.start_game(
             settings['game_mode'],
             settings['players'],
