@@ -3,8 +3,8 @@ from saveData.writeplayer import WritePlayer
 
 
 class consoleNave:
-    def __init__(self, data: dict):
-        self.data = data
+    def __init__(self, singleton_mtg_sim):
+        self.data = singleton_mtg_sim.data
         self.saved_player_names = self.get_saved_player_names()
         user_choice = None
 

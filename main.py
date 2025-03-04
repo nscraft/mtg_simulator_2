@@ -1,11 +1,13 @@
 import os
 from get_data import get_data
+from saveData.observer import saveDataObserver
 from UI import consol_ui
 
 
 class MTGSim:
     def __init__(self):
         self.data = {}
+        self.saveDataObserver = saveDataObserver()
         print("~~Welcome to MTG_Sim!~~")
 
     def set_data(self):
@@ -19,7 +21,7 @@ class MTGSim:
                 self.data.update(get_data(file.split('.')[0]))
 
     def start_ui(self):
-        ui = consol_ui.consoleNave(self.data)
+        ui = consol_ui.consoleNave(self)
         ui.main_console_menu()
 
 
