@@ -52,7 +52,6 @@ class MTGSim:
               f"\n{self.saved_player_names}")
         print("\nEnter your new player's name:")
         player_name = input()
-        # if player name already exists, ask for a new name
         if player_name in self.saved_player_names:
             print("Player already exists. Please enter a new name.")
         else:
@@ -69,11 +68,20 @@ class MTGSim:
         pass
 
     def run_game_menu(self):
+        """
+        Prompts the user to select game settings and starts the game.
+        game_mode: 'Commander' | 'Standard'
+        num_players: int (number of players)
+        players: dict {
+            'player_1': str (player name),
+            'player_2': str (player name),
+            ...
+        }
+        """
         settings = {
             'game_mode': None,
             'num_players': None,
             'players': {},
-            'num_games': int,
         }
         while True:
             print("\nGame Mode:"
@@ -97,20 +105,22 @@ class MTGSim:
             else:
                 print("Invalid input. Please enter a number.")
                 continue
-            print("\nSaved Players:"
-                  f"\n{self.saved_player_names}")
-            for i in range(settings['num_players']):
-                player = input(f"Enter player {i} name:")
-                if player in self.saved_player_names:
-                    settings['players'].update({f'player_{i}': player})
-                else:
-                    print("Player does not exist.")
-                    continue
-            self.start_game(
-                settings['game_mode'],
-                settings['players'],
-            )
-        self.main_console_menu()
+            while True:
+                print("\nSaved Players:"
+                      f"\n{self.saved_player_names}")
+                for i in range(settings['num_players']):
+                    player = input(f"Enter player {i + 1} name:")
+                    if player in self.saved_player_names:
+                        settings['players'].update({f'player_{i + 1}': player})
+                    else:
+                        print("Player does not exist.")
+                        continue
+                break
+            break
+        self.start_game(
+            settings['game_mode'],
+            settings['players'],
+        )
 
     def create_player(self, player_name):
         max_player_id = self.data['players'][-1]['id']
