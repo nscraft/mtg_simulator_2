@@ -63,6 +63,12 @@ class MTGSim:
             self.main_console_menu()
 
     def load_deck_menu(self):
+        pass
+
+    def print_report_menu(self):
+        pass
+
+    def run_game_menu(self):
         settings = {
             'game_mode': None,
             'num_players': None,
