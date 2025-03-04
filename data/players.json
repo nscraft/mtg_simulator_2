@@ -3,13 +3,13 @@
     {
       "id": 1,
       "name": "John Doe",
-      "decks": [],
+      "decks": ['Boros Aggro', 'Kumena Merfolk'],
       "score": 50
     },
     {
       "id": 2,
       "name": "Jane Smith",
-      "decks": [],
+      "decks": ['Golgari Midrange', 'Rith Tokens'],
       "score": 100
     }
   ]

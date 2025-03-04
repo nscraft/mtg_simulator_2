@@ -1,6 +1,7 @@
 import os
 import json
 from get_data import get_data
+from events import game
 
 
 class MTGSim:
@@ -40,7 +41,7 @@ class MTGSim:
             elif choice == '3':
                 self.print_report_menu()
             elif choice == '4':
-                self.run_game_menu()
+                self.game_setup_menu()
             elif choice == '5':
                 print("Goodbye")
                 exit()
@@ -68,7 +69,7 @@ class MTGSim:
     def print_report_menu(self):
         pass
 
-    def run_game_menu(self):
+    def game_setup_menu(self):
         """
         Prompts the user to select game settings and starts the game.
         game_mode: 'Commander' | 'Standard'
@@ -84,6 +85,7 @@ class MTGSim:
             'num_players': None,
             'players': {},
         }
+        # choose game mode
         while True:
             print("\nGame Mode:"
                   "\n1. Commander",
@@ -100,6 +102,7 @@ class MTGSim:
                 print("Invalid choice. Please choose again.")
                 continue
             break
+        # choose number of players
         while True:
             num_players = input("Enter the number of players:")
             if num_players.isnumeric():
@@ -109,6 +112,7 @@ class MTGSim:
                 print("Invalid input. Please enter a number.")
                 continue
             break
+        # choose players
         print("\nSaved Players:"
               f"\n{self.saved_player_names}")
         for i in range(settings['num_players']):
@@ -118,6 +122,21 @@ class MTGSim:
                     settings['players'].update({f'player_{i + 1}': player})
                 else:
                     print("Player does not exist.")
+                    continue
+                break
+        # choose decks
+        for _ in settings['players']:
+            # get player deck names
+            available_decks = self.data['players'][_].get('decks', [])
+            print(f"\nAvailable decks for {settings['players'][_]}:"
+                  f"\n{available_decks}")
+            print(f"\nChoose a deck for {settings['players'][_]}:")
+            while True:
+                deck = input()
+                if deck in available_decks:
+                    settings['players'][_].update({'deck': deck})
+                else:
+                    print("Deck not found.")
                     continue
                 break
         print("\nGame settings:"
@@ -152,7 +171,7 @@ class MTGSim:
         pass
 
     def start_game(self, game_mode: str, players: dict):
-        pass
+        game.GameEvent(game_mode, players, self.data)
 
 
 if __name__ == "__main__":
