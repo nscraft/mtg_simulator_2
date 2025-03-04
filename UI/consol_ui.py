@@ -1,30 +1,9 @@
-import os
-import json
-from get_data import get_data
 
-
-class MTGSim:
+class MainMenu:
     def __init__(self):
-        self.data = {}
-        self.saved_player_names = []
-        print("~~Welcome to MTG_Sim!~~")
+        user_choice = None
 
-    def set_data(self):
-        # find all json files in the data directory
-        data_files = [file for file in os.listdir('data') if file.endswith('.json')]
-        if not data_files:
-            print("No data files found.")
-        else:
-            # for each file, update self.configuration with the contents of the file
-            for file in data_files:
-                self.data.update(get_data(file.split('.')[0]))
-            self.saved_player_names.append(self.get_saved_player_names())
-
-    def get_saved_player_names(self) -> list:
-        data = self.data.get('players', [])
-        return [player['name'] for player in data]
-
-    def console_menu_loop(self):
+    def run(self):
         while True:
             print("\nMain Menu:"
                   "\n1. Create Player",  # todo: develop modify player option
@@ -44,6 +23,7 @@ class MTGSim:
                     print("Player already exists. Please enter a new name.")
                 else:
                     self.create_player(player_name)
+                    self.set_data()
                     self.get_saved_player_names()
                     print("\nSaved Players:"
                           f"{self.saved_player_names}")
@@ -103,34 +83,3 @@ class MTGSim:
                 break
             else:
                 print("Invalid choice. Please choose again.")
-
-    def create_player(self, player_name):
-        max_player_id = self.data['players'][-1]['id']
-        new_player = {
-            'id': max_player_id + 1,
-            'name': player_name,
-            'decks': [],
-            'score': 0
-        }
-        self.data['players'].append(new_player)
-        player_file_content = {
-            'players': self.data['players']
-        }
-        with open('data/players.json', 'w') as f:
-            json.dump(player_file_content, f, indent=4)
-
-    def load_deck(self):
-        pass
-
-    def print_report(self):
-        pass
-
-    def start_game(self, game_mode: str, players: dict):
-        pass
-
-
-if __name__ == "__main__":
-    mtg_sim = MTGSim()
-    mtg_sim.set_data()
-    mtg_sim.get_saved_player_names()
-    mtg_sim.console_menu_loop()
