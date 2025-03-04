@@ -43,7 +43,7 @@ class MTGSim:
                 self.run_game_menu()
             elif choice == '5':
                 print("Goodbye")
-                break
+                exit()
             else:
                 print("Invalid choice. Please choose again.")
 
