@@ -18,7 +18,7 @@ class MTGSim:
             # for each file, update self.configuration with the contents of the file
             for file in data_files:
                 self.data.update(get_data(file.split('.')[0]))
-            self.saved_player_names.append(self.get_saved_player_names())
+            self.saved_player_names = self.get_saved_player_names()
 
     def get_saved_player_names(self) -> list:
         data = self.data.get('players', [])
@@ -44,9 +44,9 @@ class MTGSim:
                     print("Player already exists. Please enter a new name.")
                 else:
                     self.create_player(player_name)
-                    self.get_saved_player_names()
+                    self.set_data()
                     print("\nSaved Players:"
-                          f"{self.saved_player_names}")
+                          f"\n{self.saved_player_names}")
                     break
 
             elif choice == '2':
