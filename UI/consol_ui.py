@@ -2,12 +2,21 @@ from events import game
 from saveData.writeplayer import WritePlayer
 
 
-class consoleNave:
+class ConsoleUI:
+    _instance = None
+
+    def __new__(cls, *args, **kwargs):
+        if cls._instance is None:
+            cls._instance = super(ConsoleUI, cls).__new__(cls)
+        return cls._instance
+
     def __init__(self, singleton_mtg_sim):
-        self.singleton_mtg_sim = singleton_mtg_sim
-        self.data = singleton_mtg_sim.data
-        self.saved_player_names = self.get_saved_player_names()
-        user_choice = None
+        if not hasattr(self, 'initialized'):  # Ensure __init__ is only called once
+            self.singleton_mtg_sim = singleton_mtg_sim
+            self.data = singleton_mtg_sim.data
+            self.saved_player_names = self.get_saved_player_names()
+            self.user_choice = None
+            self.initialized = True
 
     def get_saved_player_names(self) -> list:
         data = self.data.get('players', [])

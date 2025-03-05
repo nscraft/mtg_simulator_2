@@ -35,7 +35,7 @@ class MTGSim:
         self.observers.append(observer)
 
     def _start_ui(self):
-        ui = consol_ui.consoleNave(self)
+        ui = consol_ui.ConsoleUI(self)
         ui.main_console_menu()
 
     def run(self):
