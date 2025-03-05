@@ -1,5 +1,5 @@
 from events import game
-from saveData.writeplayer import WritePlayer
+from saveData.writePlayer import WritePlayer
 
 
 class ConsoleUI:
