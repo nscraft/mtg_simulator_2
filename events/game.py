@@ -28,17 +28,14 @@ class GameEvent:
         self.singleton_mtg_sim = singleton_mtg_sim
         self.data = singleton_mtg_sim.data
         self.game_kind = game_kind
+        self.rules = self._get_rules()
         self.selected_players = selected_players
         assert all(
-            player['name'] in [player['name'] for player in self.data['players']] for player in selected_players.values())
-        assert all(
-            deck in [deck['name'] for deck in self.data['decks']] for deck in
-            [player['deck'] for player in selected_players.values()]
-        )
+            player['name'] in [player_data['name'] for player_data in self.data['players']] for player in selected_players.values())
         self.players = self._get_players()
         self.num_players = len(selected_players)
         assert self.num_players > -1, 'Not enough players to play'
-        self.rules = self._get_rules()
+
         self.phase = str
         self.step = str
         self.player_with_priority = None
@@ -58,14 +55,14 @@ class GameEvent:
         player_object_list = []
         for player_num in self.selected_players:
             deck_name = self.selected_players[player_num]['deck']
-            deck_data = self.data['decks'][[deck['name'] for deck in self.data['decks']].index(deck_name)]
+            deck_data = self.data['decks'][deck_name]
             player_object_list.append(Player(
                 player_num=player_num.strip('player_'),
                 name=self.selected_players[player_num]['name'],
                 life_total=self.rules['starting_life'],
                 max_hand_size=self.rules['max_hand_size'],
                 deck=Deck(
-                    deck_name=player_num['deck'],
+                    deck_name=deck_name,
                     kind=deck_data['kind'],
                     cards=deck_data['cards'],
                     commander=deck_data.get('commander', None),
