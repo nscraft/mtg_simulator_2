@@ -37,13 +37,13 @@ class GameEvent:
 
     def get_rules(self):
         if self.game_kind == 'commander':
-            return rules.commanderRules().rules
+            return rules.CommanderRules().rules
         elif self.game_kind == 'standard':
-            return rules.generalRules().rules
+            return rules.GeneralRules().rules
         elif self.game_kind == 'gold_fish':
-            return rules.generalRules().rules
+            return rules.GeneralRules().rules
         else:
-            return rules.generalRules().rules
+            return rules.GeneralRules().rules
 
     def init_gameState(self):
         pass

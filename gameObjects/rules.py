@@ -1,4 +1,4 @@
-class generalRules:
+class GeneralRules:
     def __init__(self):
         self.rules = {
             "starting_life": 20,
@@ -10,7 +10,7 @@ class generalRules:
         }
 
 
-class commanderRules(generalRules):
+class CommanderRules(GeneralRules):
     def __init__(self):
         super().__init__()
         self.rules["starting_life"] = 40

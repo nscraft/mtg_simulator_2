@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e44c17f-007b-44ff-bcbd-eb43451c80e7" name="Changes" comment="initial commit">
-      <change afterPath="$PROJECT_DIR$/saveData/observer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UI/consol_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI/consol_ui.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/saveData/writeplayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/saveData/writeplayer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +22,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "nscraft"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/nscraft/mtg_simulator_2.git",
+    "accountId": "bc03ad82-968e-45f8-9dc8-a0af8bfe7219"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -35,20 +43,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python tests.Python tests in test_state.py.executor&quot;: &quot;Run&quot;,
-    &quot;Python tests.Unittests in bin.executor&quot;: &quot;Run&quot;,
-    &quot;Python.consol_ui.executor&quot;: &quot;Run&quot;,
-    &quot;Python.game.executor&quot;: &quot;Run&quot;,
-    &quot;Python.main.executor&quot;: &quot;Run&quot;,
-    &quot;Python.scratch.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/cleandeceit/Projects/PycharmProjects/mtg_simulator_2/data/_backup&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propDebugger&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python tests.Python tests in test_state.py.executor": "Run",
+    "Python tests.Unittests in bin.executor": "Run",
+    "Python.consol_ui.executor": "Run",
+    "Python.game.executor": "Run",
+    "Python.main.executor": "Run",
+    "Python.scratch.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/cleandeceit/Projects/PycharmProjects/mtg_simulator_2/data/_backup",
+    "settings.editor.selected.configurable": "project.propDebugger"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\cleandeceit\Projects\PycharmProjects\mtg_simulator_2\data\_backup" />
@@ -376,7 +384,95 @@
       <option name="project" value="LOCAL" />
       <updated>1741100430681</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741129024739</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1741129024739</updated>
+    </task>
+    <task id="LOCAL-00036" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741129294503</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1741129294503</updated>
+    </task>
+    <task id="LOCAL-00037" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741129673852</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1741129673852</updated>
+    </task>
+    <task id="LOCAL-00038" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741129780845</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1741129780845</updated>
+    </task>
+    <task id="LOCAL-00039" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741130454650</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1741130454650</updated>
+    </task>
+    <task id="LOCAL-00040" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741131481320</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1741131481320</updated>
+    </task>
+    <task id="LOCAL-00041" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741131767206</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1741131767206</updated>
+    </task>
+    <task id="LOCAL-00042" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741132449256</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1741132449256</updated>
+    </task>
+    <task id="LOCAL-00043" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741133243306</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1741133243306</updated>
+    </task>
+    <task id="LOCAL-00044" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741148123484</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1741148123484</updated>
+    </task>
+    <task id="LOCAL-00045" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741190378849</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1741190378850</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
