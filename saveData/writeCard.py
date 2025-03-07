@@ -32,12 +32,12 @@ class WriteCard:
         for each in self.observers:
             each.notify('cards.json')
 
-    def remove_player(self, player_name):
+    def remove_card(self, card_name):
         for each in self.observers:
             each.notify('cards.json')
         pass
 
-    def update_player(self, player_name, *args):
+    def update_card(self, card_name, *args):
         for each in self.observers:
             each.notify('cards.json')
         pass
