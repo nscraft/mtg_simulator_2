@@ -19,7 +19,7 @@ class AutoBattle:
             self.number_of_games -= 1
             game = GameEvent(
                 game_kind=self.game_kind,
-                players=self.players,
+                selected_players=self.players,
                 data=self.data
             )
             assert game.num_players == 1, 'Not a single player game'
@@ -32,7 +32,7 @@ class AutoBattle:
             self.number_of_games -= 1
             game = GameEvent(
                 game_kind=self.game_kind,
-                players=self.players,
+                selected_players=self.players,
                 data=self.data
             )
             assert game.num_players > 1, 'Not a multi player game'

@@ -2,7 +2,7 @@ import random
 
 
 class Player:
-    def __init__(self, player_num: int, name: str, life_total: int, max_hand_size: int, deck: dict):
+    def __init__(self, player_num: int, name: str, life_total: int, max_hand_size: int, deck):
         self.turn_num = 0
         self.player_num = player_num
         self.name = name
@@ -16,9 +16,9 @@ class Player:
             'exile': [],
             'stack': []
         }
-        self.deck = deck
-        if self.deck.get('kind') == 'commander':
-            self.commander = self.deck.get('commander')
+        self.deck = deck  # a Deck object
+        if hasattr(self.deck, 'commander'):
+            self.commander = self.deck.commander
         # game setup actions
         self.life_total = life_total
         self.mana_pool = {
@@ -42,7 +42,7 @@ class Player:
         self.board['command'].append(self.commander)
 
     def set_deck_to_library(self):
-        card_list = self.deck.get('cards', [])
+        card_list = self.deck.cards
         # if self has attribute commander...
         if hasattr(self, 'commander'):
             card_list.remove(self.commander)

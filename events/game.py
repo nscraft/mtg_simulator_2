@@ -1,11 +1,13 @@
 import gameObjects.rules as rules
+from gameObjects.player import Player
+from gameObjects.deck import Deck
 
 
 class GameEvent:
-    def __init__(self, game_kind: str, players: dict, data: dict):
+    def __init__(self, singleton_mtg_sim, game_kind: str, selected_players: dict):
         """
         :param game_kind:
-        :param players: example
+        :param selected_players: example
         {
         'player_1': {'name': 'John Doe', 'deck': 'Boros Aggro'},
         'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'}
@@ -23,15 +25,19 @@ class GameEvent:
             {'name': 'Gruul Aggro', 'cards': ['Card 1', 'Card 2', 'Card 3']}
         ]
         """
+        self.singleton_mtg_sim = singleton_mtg_sim
         self.game_kind = game_kind
-        self.players = players
-        assert all(player['name'] in [player['name'] for player in data['players']] for player in players.values())
+        self.selected_players = selected_players
         assert all(
-            deck in [deck['name'] for deck in data['decks']] for deck in [player['deck'] for player in players.values()]
+            player['name'] in [player['name'] for player in data['players']] for player in selected_players.values())
+        assert all(
+            deck in [deck['name'] for deck in data['decks']] for deck in
+            [player['deck'] for player in selected_players.values()]
         )
-        self.num_players = len(players)
+        self.players = self._get_players()
+        self.num_players = len(selected_players)
         assert self.num_players > -1, 'Not enough players to play'
-        self.data = data
+        self.data = singleton_mtg_sim.data
         self.rules = self._get_rules()
         self.phase = str
         self.step = str
@@ -46,6 +52,24 @@ class GameEvent:
             return rules.GeneralRules().rules
         else:
             return rules.GeneralRules().rules
+
+    def _get_players(self):
+        # create a player object for each player in self.players
+
+        for player_num in self.selected_players:
+            deck_data = self.data['decks'][player_num['deck']]
+            self.players.append(Player(
+                player_num=player_num.strip('player_'),
+                name=player_num['name'],
+                life_total=self.rules['starting_life'],
+                max_hand_size=self.rules['max_hand_size'],
+                deck=Deck(
+                    deck_name=player_num['deck'],
+                    kind=deck_data['kind'],
+                    cards=deck_data['cards'],
+                    commander=deck_data.get('commander', None),
+                ),
+            ))
 
     def players_playing(self):
         print(f"{self.num_players} players in game")
