@@ -2,7 +2,7 @@
     "players": [
         {
             "id": 1,
-            "name": "John Doe",
+            "name": "John",
             "decks": [
                 "Boros Aggro",
                 "Kumena Merfolk"

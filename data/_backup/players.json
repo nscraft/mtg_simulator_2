@@ -1,16 +1,28 @@
 {
-  "players": [
-    {
-      "id": 1,
-      "name": "John Doe",
-      "decks": [],
-      "score": 50
-    },
-    {
-      "id": 2,
-      "name": "Jane Smith",
-      "decks": [],
-      "score": 100
-    }
-  ]
+    "players": [
+        {
+            "id": 1,
+            "name": "John",
+            "decks": [
+                "Boros Aggro",
+                "Kumena Merfolk"
+            ],
+            "score": 50
+        },
+        {
+            "id": 2,
+            "name": "Jane Smith",
+            "decks": [
+                "Golgari Midrange",
+                "Rith Tokens"
+            ],
+            "score": 100
+        },
+        {
+            "id": 3,
+            "name": "nick",
+            "decks": [],
+            "score": 0
+        }
+    ]
 }

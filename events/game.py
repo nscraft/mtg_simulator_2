@@ -35,7 +35,6 @@ class GameEvent:
         self.players = self._get_players()
         self.num_players = len(selected_players)
         assert self.num_players > -1, 'Not enough players to play'
-
         self.phase = str
         self.step = str
         self.player_with_priority = None
