@@ -148,4 +148,8 @@ class ConsoleUI:
               f"\nPlayers: {settings['players']}")
         print("Starting game...")
 
-        game.GameEvent(settings['game_mode'], settings['players'], self.data)
+        game.GameEvent(
+            singleton_mtg_sim=self.singleton_mtg_sim,
+            game_kind=settings['game_mode'],
+            selected_players=settings['players'],
+                       )
