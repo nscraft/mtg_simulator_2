@@ -54,7 +54,8 @@ class GameEvent:
         player_object_list = []
         for player_num in self.selected_players:
             deck_name = self.selected_players[player_num]['deck']
-            deck_data = self.data['decks'][deck_name]
+            deck_data = self.data['decks'][next(
+                i for i, deck in enumerate(self.data['decks']) if deck['name'] == deck_name)]
             player_object_list.append(Player(
                 player_num=player_num.strip('player_'),
                 name=self.selected_players[player_num]['name'],
