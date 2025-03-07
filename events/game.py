@@ -78,7 +78,19 @@ class GameEvent:
             return True
 
     def remove_player_from_game(self, player):
-        self.players.pop(player)
+        """
+        self.selected_players is a dictionary with keys 'player_1', 'player_2', etc.
+            each key in self.selected_players is a dictionary with keys 'name' and 'deck'
+        self.players is a list of Player objects
+            each Player object has a name attribute
+        This method removes the Player object from self.players where player.name == self.selected_players[player]['name']
+        self.selected_players is unchanged.
+        self.num_players is then updated before calling self.players_playing()
+        :param player: a key in self.selected_players
+        """
+        self.players.remove(
+            next(player_obj for player_obj in self.players if player_obj.name == self.selected_players[player]['name'])
+        )
         self.num_players = len(self.players)
         self.players_playing()
 
