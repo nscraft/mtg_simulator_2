@@ -26,18 +26,18 @@ class GameEvent:
         ]
         """
         self.singleton_mtg_sim = singleton_mtg_sim
+        self.data = singleton_mtg_sim.data
         self.game_kind = game_kind
         self.selected_players = selected_players
         assert all(
-            player['name'] in [player['name'] for player in data['players']] for player in selected_players.values())
+            player['name'] in [player['name'] for player in self.data['players']] for player in selected_players.values())
         assert all(
-            deck in [deck['name'] for deck in data['decks']] for deck in
+            deck in [deck['name'] for deck in self.data['decks']] for deck in
             [player['deck'] for player in selected_players.values()]
         )
         self.players = self._get_players()
         self.num_players = len(selected_players)
         assert self.num_players > -1, 'Not enough players to play'
-        self.data = singleton_mtg_sim.data
         self.rules = self._get_rules()
         self.phase = str
         self.step = str
@@ -55,10 +55,10 @@ class GameEvent:
 
     def _get_players(self):
         # create a player object for each player in self.players
-
+        player_object_list = []
         for player_num in self.selected_players:
             deck_data = self.data['decks'][player_num['deck']]
-            self.players.append(Player(
+            player_object_list.append(Player(
                 player_num=player_num.strip('player_'),
                 name=player_num['name'],
                 life_total=self.rules['starting_life'],
@@ -70,6 +70,7 @@ class GameEvent:
                     commander=deck_data.get('commander', None),
                 ),
             ))
+        return player_object_list
 
     def players_playing(self):
         print(f"{self.num_players} players in game")
