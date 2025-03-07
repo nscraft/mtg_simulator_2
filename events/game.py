@@ -26,17 +26,15 @@ class GameEvent:
         """
         self.game_kind = game_kind
         self.players = players
-        # assert all player names are in data['players']
         assert all(player['name'] in [player['name'] for player in data['players']] for player in players.values())
-        # assert all decks are in data['decks']
-        assert all(deck
-                   in [deck['name'] for deck in data['decks']] for deck in [player['deck'] for player in players.values
-        ()])
+        assert all(
+            deck in [deck['name'] for deck in data['decks']] for deck in [player['deck'] for player in players.values()]
+        )
         self.data = data
-        self.rules = self.get_rules()
-        self.gameState = self.init_gameState()
+        self.rules = self._get_rules()
+        self.gameState = self._init_game_state()
 
-    def get_rules(self):
+    def _get_rules(self):
         if self.game_kind == 'commander':
             return rules.CommanderRules().rules
         elif self.game_kind == 'standard':
@@ -46,5 +44,5 @@ class GameEvent:
         else:
             return rules.GeneralRules().rules
 
-    def init_gameState(self):
+    def _init_game_state(self):
         return state.GameState(self.game_kind, self.players)

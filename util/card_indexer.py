@@ -1,0 +1,1 @@
+# todo: map all card name strings to a unique integer index for correct referencing when muliple copies exist
