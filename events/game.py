@@ -1,4 +1,5 @@
 import gameObjects.rules as rules
+import gameObjects.state as state
 
 
 class GameEvent:
@@ -46,4 +47,4 @@ class GameEvent:
             return rules.GeneralRules().rules
 
     def init_gameState(self):
-        pass
+        return state.GameState(self.game_kind, self.players)

@@ -4,7 +4,10 @@ from gameObjects.state import GameState
 
 class TestGameState(unittest.TestCase):
     def setUp(self):
-        self.mock_players = ['player1', 'player2']
+        self.mock_players = {
+            'player_1': {'name': 'John Doe', 'deck': 'Boros Aggro'},
+            'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'},
+        }
         self.game_state = GameState('standard', self.mock_players)
 
     def test_players_playing(self):
@@ -13,13 +16,13 @@ class TestGameState(unittest.TestCase):
         self.assertFalse(self.game_state.players_playing())
 
     def test_remove_player(self):
-        self.game_state.remove_player('player1')
+        self.game_state.remove_player_from_game('player_1')
         self.assertEqual(self.game_state.num_players, 1)
-        self.assertEqual(self.game_state.players, ['player2'])
+        self.assertEqual(self.game_state.players, {'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'}})
 
-        self.game_state.remove_player('player2')
+        self.game_state.remove_player_from_game('player_2')
         self.assertEqual(self.game_state.num_players, 0)
-        self.assertEqual(self.game_state.players, [])
+        self.assertEqual(self.game_state.players, {})
 
     def test_advance_turn(self):
         self.game_state.phase = 'Beginning Phase'

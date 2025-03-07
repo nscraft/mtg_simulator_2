@@ -1,8 +1,16 @@
 class GameState:
-    def __init__(self, kind: str, players: list):
-        self.kind = kind  # 'commander' or 'standard'
+    def __init__(self, game_kind: str, players: dict):
+        """
+        :param game_kind: 'commander' or 'standard'
+        :param players:
+        {
+        'player_1': {'name': 'John Doe', 'deck': 'Boros Aggro'},
+        'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'}
+         }
+        """
+        self.kind = game_kind
         self.players = players
-        self.num_players = len(self.players)
+        self.num_players = len(players)
         assert self.num_players > -1, 'Not enough players'
         self.turn_structure = {
             'Untap Step': 'Beginning Phase',
@@ -28,8 +36,8 @@ class GameState:
         else:
             return True
 
-    def remove_player(self, player):
-        self.players.remove(player)
+    def remove_player_from_game(self, player):
+        self.players.pop(player)
         self.num_players = len(self.players)
         self.players_playing()
 
