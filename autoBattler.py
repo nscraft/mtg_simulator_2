@@ -4,23 +4,24 @@ from events.game import GameEvent
 
 class AutoBattle:
 
-    def __init__(self, turn_limit: int | None, number_of_games: int,
-                 game_kind: str, players: dict, data: dict
+    def __init__(self, singleton_mtg_sim, turn_limit: int | None, number_of_games: int,
+                 game_kind: str, players: dict,
                  ):
+        self.singleton_mtg_sim = singleton_mtg_sim
+        self.data = singleton_mtg_sim.data
         self.turn_limit = turn_limit
         self.number_of_games = number_of_games
         assert self.number_of_games > 0, 'Not enough games'
         self.game_kind = game_kind
         self.players = players
-        self.data = data
 
     def run_singlePlayer_game_logic(self):
         while self.number_of_games > 0:
             self.number_of_games -= 1
             game = GameEvent(
+                singleton_mtg_sim=self.singleton_mtg_sim,
                 game_kind=self.game_kind,
                 selected_players=self.players,
-                data=self.data
             )
             assert game.num_players == 1, 'Not a single player game'
             while self.turn_limit > 0:
@@ -31,9 +32,9 @@ class AutoBattle:
         while self.number_of_games > 0:
             self.number_of_games -= 1
             game = GameEvent(
+                singleton_mtg_sim=self.singleton_mtg_sim,
                 game_kind=self.game_kind,
                 selected_players=self.players,
-                data=self.data
             )
             assert game.num_players > 1, 'Not a multi player game'
             while self.turn_limit > 0:
