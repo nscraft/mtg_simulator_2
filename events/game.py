@@ -1,5 +1,4 @@
 import gameObjects.rules as rules
-import gameObjects.state as state
 
 
 class GameEvent:
@@ -30,9 +29,13 @@ class GameEvent:
         assert all(
             deck in [deck['name'] for deck in data['decks']] for deck in [player['deck'] for player in players.values()]
         )
+        self.num_players = len(players)
+        assert self.num_players > -1, 'Not enough players to play'
         self.data = data
         self.rules = self._get_rules()
-        self.gameState = self._init_game_state()
+        self.phase = str
+        self.step = str
+        self.player_with_priority = None
 
     def _get_rules(self):
         if self.game_kind == 'commander':
@@ -44,5 +47,48 @@ class GameEvent:
         else:
             return rules.GeneralRules().rules
 
-    def _init_game_state(self):
-        return state.GameState(self.game_kind, self.players)
+    def players_playing(self):
+        print(f"{self.num_players} players in game")
+        if self.num_players == 0:
+            return False
+        else:
+            return True
+
+    def remove_player_from_game(self, player):
+        self.players.pop(player)
+        self.num_players = len(self.players)
+        self.players_playing()
+
+    def advance_turn(self):
+        """
+        Step through the turn structure by one step or phase.
+        Starting a new turn is a method belonging to the player class.
+        When Player.start_turn() called, the player's turn_num attribute is incremented by 1 and GamesState.phase is
+         set to 'Beginning Phase'.
+        """
+        current_phase = self.phase  # example 'Combat Phase'
+        current_step = self.step  # example 'Draw Step' (treats 'Main Phase' as a step)
+
+        # find the index of the current step in the turn_structure
+        step_index = list(self.rules['turn_structure'].keys()).index(current_step)
+        # set self.step to the next step in the turn_structure
+        if current_step == 'Cleanup Step':
+            self.step = 'Untap Step'
+            self.phase = self.rules['turn_structure'][self.step]
+        else:
+            self.step = list(self.rules['turn_structure'].keys())[step_index + 1]
+            self.phase = self.rules['turn_structure'][self.step]
+
+    def pass_priority(self):
+        # if no player has priority, set it to player_1
+        # else, set it to the next player in the players dict
+        current_priority_player = self.player_with_priority
+        if current_priority_player is None:
+            self.player_with_priority = 'player_1'
+        else:
+            player_list = list(self.players.keys())
+            current_index = player_list.index(current_priority_player)
+            if current_index == len(player_list) - 1:
+                self.player_with_priority = player_list[0]
+            else:
+                self.player_with_priority = player_list[current_index + 1]

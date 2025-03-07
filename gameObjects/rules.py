@@ -7,6 +7,20 @@ class GeneralRules:
             "max_copies": 4,
             "starting_hand_size": 7,
             "starting_hand_draws": 1,
+            "turn_structure": {
+                'Untap Step': 'Beginning Phase',
+                'Upkeep Step': 'Beginning Phase',
+                'Draw Step': 'Beginning Phase',
+                'Pre-combat Main Phase': 'Main Phase',
+                'Beginning of Combat Step': 'Combat Phase',
+                'Declare Attackers Step': 'Combat Phase',
+                'Declare Blockers Step': 'Combat Phase',
+                'Combat Damage Step': 'Combat Phase',
+                'End of Combat Step': 'Combat Phase',
+                'Post-combat Main Phase': 'Main Phase',
+                'End Step': 'Ending Phase',
+                'Cleanup Step': 'Ending Phase',
+            },
         }
 
 
