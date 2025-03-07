@@ -29,10 +29,6 @@ class Player:
             'green': 0,
             'colorless': 0
         }
-        self.set_commander_to_command_zone()
-        self.set_deck_to_library()
-        self.shuffle_library()
-        self.draw_starting_hand()
 
     def start_turn(self):
         self.turn_num += 1
