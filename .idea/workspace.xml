@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1e44c17f-007b-44ff-bcbd-eb43451c80e7" name="Changes" comment="initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/autoBattler.py" beforeDir="false" afterPath="$PROJECT_DIR$/autoBattler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/events/game.py" beforeDir="false" afterPath="$PROJECT_DIR$/events/game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/test_gameObjects/test_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/Test/test_gameObjects/test_game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,11 +45,11 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Python tests.Python tests in test_game.py.executor": "Run",
+    "Python tests.Python tests in test_game.py.executor": "Debug",
     "Python tests.Python tests in test_state.py.executor": "Run",
     "Python tests.Unittests in bin.executor": "Run",
     "Python.consol_ui.executor": "Run",
-    "Python.game.executor": "Run",
+    "Python.game.executor": "Debug",
     "Python.main.executor": "Debug",
     "Python.scratch.executor": "Run",
     "Python.state.executor": "Debug",
@@ -115,22 +113,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1741019307689</updated>
-    </task>
-    <task id="LOCAL-00008" summary="initial commit">
-      <option name="closed" value="true" />
-      <created>1741033222922</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1741033222922</updated>
-    </task>
-    <task id="LOCAL-00009" summary="initial commit">
-      <option name="closed" value="true" />
-      <created>1741035009373</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1741035009373</updated>
     </task>
     <task id="LOCAL-00010" summary="initial commit">
       <option name="closed" value="true" />
@@ -508,11 +490,38 @@
       <option name="project" value="LOCAL" />
       <updated>1741377170192</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741379714276</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1741379714276</updated>
+    </task>
+    <task id="LOCAL-00058" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1741380008082</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1741380008082</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <option name="LAST_COMMIT_MESSAGE" value="initial commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/events/game.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

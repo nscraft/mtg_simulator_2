@@ -1,15 +1,12 @@
 import unittest
+import unittest.mock
 from events.game import GameEvent
 
 
 class TestGameEvent(unittest.TestCase):
     def setUp(self):
-        self.mock_game_kind = 'commander'
-        self.mock_players = {
-            'player_1': {'name': 'John Doe', 'deck': 'Boros Aggro'},
-            'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'},
-        }
-        self.mock_data = {
+        self.mock_singleton_mtg_sim = unittest.mock.MagicMock()
+        self.mock_singleton_mtg_sim.data = {
             'players': [
                 {'id': 1, 'name': 'John Doe', 'decks': ['Boros Aggro', 'Dimir Control'], "score": 0},
                 {'id': 2, 'name': 'Jane Doe', 'decks': ['Simic Ramp', 'Gruul Aggro'], "score": 100}
@@ -21,7 +18,15 @@ class TestGameEvent(unittest.TestCase):
                 {'name': 'Gruul Aggro', 'cards': ['Card 1', 'Card 2', 'Card 3']}
             ]
         }
-        self.game_event = GameEvent(self.mock_game_kind, self.mock_players, self.mock_data)
+
+        self.mock_game_kind = 'commander'
+        self.mock_selected_players = {
+            'player_1': {'name': 'John Doe', 'deck': 'Boros Aggro'},
+            'player_2': {'name': 'Jane Doe', 'deck': 'Simic Ramp'},
+        }
+        self.game_event = GameEvent(self.mock_singleton_mtg_sim,
+                                    self.mock_game_kind,
+                                    self.mock_selected_players)
 
     def test_players_playing(self):
         self.assertTrue(self.game_event.players_playing())

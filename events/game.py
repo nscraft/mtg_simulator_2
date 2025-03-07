@@ -57,10 +57,11 @@ class GameEvent:
         # create a player object for each player in self.players
         player_object_list = []
         for player_num in self.selected_players:
-            deck_data = self.data['decks'][player_num['deck']]
+            deck_name = self.selected_players[player_num]['deck']
+            deck_data = self.data['decks'][[deck['name'] for deck in self.data['decks']].index(deck_name)]
             player_object_list.append(Player(
                 player_num=player_num.strip('player_'),
-                name=player_num['name'],
+                name=self.selected_players[player_num]['name'],
                 life_total=self.rules['starting_life'],
                 max_hand_size=self.rules['max_hand_size'],
                 deck=Deck(

@@ -116,7 +116,12 @@ class ConsoleUI:
             while True:
                 player = input(f"Enter player {i + 1} name:")
                 if player in self.saved_player_names:
-                    settings['players'].update({f'player_{i + 1}': player})
+                    deck_list = self.data['players'][self.saved_player_names.index(player)].get('decks', [])
+                    if len(deck_list) > 0:
+                        settings['players'].update({f'player_{i + 1}': player})
+                    else:
+                        print("No decks available for this player.")
+                        continue
                 else:
                     print("Player does not exist.")
                     continue
