@@ -3,23 +3,23 @@
     {
       "name": "Boros Aggro",
       "kind": "standard",
-      "cards": []
+      "cards": ["card1", "card2", "card3"]
     },
     {
       "name": "Kumena Merfolk",
       "kind": "commander",
-      "cards": [],
+      "cards": ["card1", "card2", "card3"],
       "commander": "Kumena, Tyrant of Orazca"
     },
     {
       "name": "Golgari Midrange",
       "kind": "standard",
-      "cards": []
+      "cards": ["card1", "card2", "card3"]
     },
     {
       "name": "Rith Tokens",
       "kind": "commander",
-      "cards": [],
+      "cards": ["card1", "card2", "card3"],
       "commander": "Rith, the Awakener"
     }
   ]
