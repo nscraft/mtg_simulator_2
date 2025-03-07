@@ -1,3 +1,26 @@
 {
-  "decks": {}
+  "decks": {
+    "Boros Aggro": {
+      "name": "Boros Aggro",
+      "kind": "standard",
+      "cards": []
+    },
+    "Kumena Merfolk": {
+      "name": "Kumena Merfolk",
+      "kind": "commander",
+      "cards": [],
+      "commander": "Kumena, Tyrant of Orazca"
+    },
+    "Golgari Midrange": {
+      "name": "Golgari Midrange",
+      "kind": "standard",
+      "cards": []
+    },
+    "Rith Tokens": {
+      "name": "Rith Tokens",
+      "kind": "commander",
+      "cards": [],
+      "commander": "Rith, the Awakener"
+    }
+  }
 }
