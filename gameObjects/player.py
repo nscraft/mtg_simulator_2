@@ -39,7 +39,6 @@ class Player:
 
     def set_deck_to_library(self):
         card_list = self.deck.cards
-        # if self has attribute commander...
         if hasattr(self, 'commander'):
             card_list.remove(self.commander)
         self.board['library'] = card_list
