@@ -1,5 +1,6 @@
 from events import game
 from saveData.writePlayer import WritePlayer
+from autoBattler import AutoBattle
 
 
 class ConsoleUI:
@@ -40,7 +41,7 @@ class ConsoleUI:
             elif choice == '4':
                 self.game_setup_menu()
             elif choice == '5':
-                print("Goodbye")
+                print("...why do we even have that lever?")
                 exit()
             else:
                 print("Invalid choice. Please choose again.")
@@ -69,7 +70,8 @@ class ConsoleUI:
     def game_setup_menu(self):
         """
         Prompts the user to select game settings and starts the game.
-        game_mode: 'Commander' | 'Standard'
+        game_type: 'Auto Battle' | 'Goldfish'
+        game_type: 'Commander' | 'Standard'
         num_players: int (number of players)
         players: dict {
             'player_1': str (player name),
@@ -79,22 +81,50 @@ class ConsoleUI:
         """
         settings = {
             'game_mode': None,
+            'game_type': None,
             'num_players': None,
             'players': {},
         }
         # choose game mode
         while True:
             print("\nGame Mode:"
-                  "\n1. Commander",
-                  "\n2. Standard",
+                  "\n1. Auto Battle",
+                  "\n2. Goldfish",
                   )
             game_mode = input("Enter your choice (1-2):")
             if game_mode == '1':
-                game_mode = 'Commander'
+                game_mode = 'Auto Battle'
                 settings.update({'game_mode': game_mode})
             elif game_mode == '2':
-                game_mode = 'Standard'
+                game_mode = 'Goldfish'
                 settings.update({'game_mode': game_mode})
+            else:
+                print("Invalid choice. Please choose again.")
+                continue
+        # Auto Battle settings
+        if settings['game_mode'] == 'Auto Battle':
+            while True:
+                num_battles = input("Enter the number of battles:")
+                if num_battles.isnumeric() and int(num_battles) > 0:
+                    num_battles = int(num_battles)
+                    settings.update({'num_battles': num_battles})
+                else:
+                    print("Invalid input. Please enter a number grater than zero.")
+                    continue
+                turn_limit = input("Enter the turn limit:")
+        # choose game type
+        while True:
+            print("\nGame Type:"
+                  "\n1. Commander",
+                  "\n2. Standard",
+                  )
+            game_type = input("Enter your choice (1-2):")
+            if game_type == '1':
+                game_type = 'Commander'
+                settings.update({'game_type': game_type})
+            elif game_type == '2':
+                game_type = 'Standard'
+                settings.update({'game_type': game_type})
             else:
                 print("Invalid choice. Please choose again.")
                 continue
@@ -143,13 +173,41 @@ class ConsoleUI:
                         continue
                     break
         print("\nGame settings:"
-              f"\nGame Mode: {settings['game_mode']}"
+              f"\nGame Mode: {settings['game_mode']}"                                                   
+              f"\nGame Type: {settings['game_type']}"
               f"\nNumber of Players: {settings['num_players']}"
               f"\nPlayers: {settings['players']}")
-        print("Starting game...")
+        if settings['game_mode'] == 'Auto Battle':
+            print(
+                f"\nNumber of Battles: {settings['num_battles']}"
+                f"\nTurn Limit: {settings['turn_limit']}"
+            )
+        self.user_choice = input("Start game? (y/n):")
+        if self.user_choice.lower() == 'y':
+            print("Starting game...")
+            self.run_game(settings)
+        else:
+            print("Game cancelled.")
+            self.main_console_menu()
 
-        game.GameEvent(
-            singleton_mtg_sim=self.singleton_mtg_sim,
-            game_kind=settings['game_mode'],
-            selected_players=settings['players'],
-                       )
+    def run_game(self, settings: dict):
+        if settings['game_mode'] == 'Auto Battle':
+            auto = AutoBattle(
+                singleton_mtg_sim=self.singleton_mtg_sim,
+                turn_limit=settings['turn_limit'],
+                number_of_games=settings['num_battles'],
+                game_kind=settings['game_type'],
+                players=settings['players'],
+            )
+            if len(settings['players']) == 1:
+                print("Running single player game...")
+                auto.run_singlePlayer_game_logic()
+            else:
+                print("Running multi player game...")
+                auto.run_multiPlayer_game_logic()
+        elif settings['game_mode'] == 'Goldfish':
+            game.GameEvent(
+                singleton_mtg_sim=self.singleton_mtg_sim,
+                game_kind=settings['game_type'],
+                selected_players=settings['players'],
+                           )
