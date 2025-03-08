@@ -37,9 +37,9 @@ class GameEvent:
         assert self.num_players > -1, 'Not enough players to play'
         self.phase = str
         self.step = str
-        self.player_with_priority = None
+        self.player_with_priority = 'player_1'
 
-    def _get_rules(self):
+    def _get_rules(self) -> dict:
         if self.game_kind == 'commander':
             return rules.CommanderRules().rules
         elif self.game_kind == 'standard':
@@ -49,7 +49,7 @@ class GameEvent:
         else:
             return rules.GeneralRules().rules
 
-    def _get_players(self):
+    def _get_players(self) -> list:
         # create a player object for each player in self.players
         player_object_list = []
         for player_num in self.selected_players:
@@ -69,6 +69,18 @@ class GameEvent:
                 ),
             ))
         return player_object_list
+
+    def set_player_battlefields(self):
+        """
+        This is a pre-game setup step that must be called before the first turn begins.
+        """
+        for player in self.players:
+            assert player.turn_num == 0, 'Player has already started their first turn'
+            if hasattr(player, 'commander'):
+                player.set_commander_to_command_zone()
+            player.set_deck_to_library()
+            player.shuffle_library()
+            player.draw_starting_hand()
 
     def players_playing(self):
         print(f"{self.num_players} players in game")
@@ -115,15 +127,12 @@ class GameEvent:
             self.phase = self.rules['turn_structure'][self.step]
 
     def pass_priority(self):
-        # if no player has priority, set it to player_1
-        # else, set it to the next player in the players dict
+        # todo: wip
+        # set it to the next player in the players dict
         current_priority_player = self.player_with_priority
-        if current_priority_player is None:
-            self.player_with_priority = 'player_1'
+        player_list = list(self.players.keys())
+        current_index = player_list.index(current_priority_player)
+        if current_index == len(player_list) - 1:
+            self.player_with_priority = player_list[0]
         else:
-            player_list = list(self.players.keys())
-            current_index = player_list.index(current_priority_player)
-            if current_index == len(player_list) - 1:
-                self.player_with_priority = player_list[0]
-            else:
-                self.player_with_priority = player_list[current_index + 1]
+            self.player_with_priority = player_list[current_index + 1]
