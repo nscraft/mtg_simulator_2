@@ -29,6 +29,7 @@ class AutoBattle:
             turn_num = 0
             while turn_num <= self.turn_limit:
                 turn_num += 1
+                print(f'Game Turn {turn_num}')
                 self.singlePlayer_game_logic(game)
 
     def run_multiPlayer_game_logic(self):
