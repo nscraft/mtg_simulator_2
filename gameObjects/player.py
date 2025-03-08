@@ -38,7 +38,7 @@ class Player:
         self.board['command'].append(self.commander)
 
     def set_deck_to_library(self):
-        card_list = self.deck.cards
+        card_list = self.deck.cards.copy()
         if hasattr(self, 'commander'):
             card_list.remove(self.commander)
         self.board['library'] = card_list
