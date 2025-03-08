@@ -16,8 +16,11 @@ class AutoBattle:
         self.players = players
 
     def run_singlePlayer_game_logic(self):
+        game_num = 1
+        print(f'Running game {game_num} of {self.number_of_games}')
         while self.number_of_games > 0:
             self.number_of_games -= 1
+            game_num += 1
             game = GameEvent(
                 singleton_mtg_sim=self.singleton_mtg_sim,
                 game_kind=self.game_kind,
@@ -29,8 +32,11 @@ class AutoBattle:
                 # single player game logic
 
     def run_multiPlayer_game_logic(self):
+        game_num = 1
+        print(f'Running game {game_num} of {self.number_of_games}')
         while self.number_of_games > 0:
             self.number_of_games -= 1
+            game_num += 1
             game = GameEvent(
                 singleton_mtg_sim=self.singleton_mtg_sim,
                 game_kind=self.game_kind,
