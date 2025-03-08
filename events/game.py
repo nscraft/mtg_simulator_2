@@ -37,8 +37,8 @@ class GameEvent:
         assert self.num_players > -1, 'Not enough players to play'
         # pre-first turn setup
         self._set_player_battlefields()
-        self.step = self.rules['turn_structure']['steps'][0]
-        self.phase = self.rules['turn_structure']['steps'][self.step]  # accesses the value (phase) for the key (step)
+        self.step = list(self.rules['turn_structure'].keys())[0]  # get the first step (key) in the turn_structure dict
+        self.phase = self.rules['turn_structure'][self.step]  # accesses the value (phase) for the key (step)
         self.player_with_priority = 'player_1'
 
     def _get_rules(self) -> dict:
