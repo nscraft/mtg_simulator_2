@@ -35,8 +35,10 @@ class GameEvent:
         self.players = self._get_players()
         self.num_players = len(selected_players)
         assert self.num_players > -1, 'Not enough players to play'
-        self.phase = str
-        self.step = str
+        # pre-first turn setup
+        self._set_player_battlefields()
+        self.step = self.rules['steps'][0]
+        self.phase = self.rules['steps'][self.step]
         self.player_with_priority = 'player_1'
 
     def _get_rules(self) -> dict:
@@ -70,7 +72,7 @@ class GameEvent:
             ))
         return player_object_list
 
-    def set_player_battlefields(self):
+    def _set_player_battlefields(self):
         """
         This is a pre-game setup step that must be called before the first turn begins.
         """

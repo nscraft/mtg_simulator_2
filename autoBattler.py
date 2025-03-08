@@ -26,7 +26,6 @@ class AutoBattle:
                 selected_players=self.players,
             )
             assert game.num_players == 1, 'Not a single player game'
-            game.set_player_battlefields()
             while self.turn_limit > 0:
                 self.turn_limit -= 1
                 # single player game logic
@@ -43,7 +42,6 @@ class AutoBattle:
                 selected_players=self.players,
             )
             assert game.num_players > 1, 'Not a multi player game'
-            game.set_player_battlefields()
             while self.turn_limit > 0:
                 self.turn_limit -= 1
                 # multi player game logic
