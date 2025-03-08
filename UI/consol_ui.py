@@ -189,12 +189,12 @@ class ConsoleUI:
               f"\nPlayers: {settings['players']}")
         if settings['game_mode'] == 'Auto Battle':
             print(
-                f"\nNumber of Battles: {settings['num_battles']}"
+                f"Number of Battles: {settings['num_battles']}"
                 f"\nTurn Limit: {settings['turn_limit']}"
             )
         self.user_choice = input("Start game? (y/n):")
         if self.user_choice.lower() == 'y':
-            print("Starting game...")
+            print("\nStarting game...")
             self.run_game(settings)
         else:
             print("Game cancelled.")
