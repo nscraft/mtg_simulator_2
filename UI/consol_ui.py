@@ -101,6 +101,7 @@ class ConsoleUI:
             else:
                 print("Invalid choice. Please choose again.")
                 continue
+            break
         # Auto Battle settings
         if settings['game_mode'] == 'Auto Battle':
             while True:
@@ -111,7 +112,16 @@ class ConsoleUI:
                 else:
                     print("Invalid input. Please enter a number grater than zero.")
                     continue
+                break
+            while True:
                 turn_limit = input("Enter the turn limit:")
+                if turn_limit.isnumeric() and int(turn_limit) > 0:
+                    turn_limit = int(turn_limit)
+                    settings.update({'turn_limit': turn_limit})
+                else:
+                    print("Invalid input. Please enter a number grater than zero.")
+                    continue
+                break
         # choose game type
         while True:
             print("\nGame Type:"
