@@ -43,4 +43,4 @@ class AutoBattle:
             assert game.num_players > 1, 'Not a multi player game'
             while self.turn_limit > 0:
                 self.turn_limit -= 1
-                # single player game logic
+                # multi player game logic
