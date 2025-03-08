@@ -51,6 +51,7 @@ class Player:
         self.board[to_zone].append(card)
 
     def draw_starting_hand(self):
+        assert len(self.board['library']) >= self.max_hand_size, 'Not enough cards in library to draw starting hand'
         for _ in range(self.max_hand_size):
             self.update_card_zone(self.board['library'][0], 'library', 'hand')
 
