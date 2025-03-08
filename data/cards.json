@@ -1,3 +1,30 @@
 {
-  "cards": {}
+  "decks": [
+    {
+      "name": "Boros Aggro",
+      "kind": "standard",
+      "cards": ["card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10",
+        "card11", "card12", "card13", "card14", "card15", "card16", "card17", "card18", "card19", "card20"
+      ]
+    },
+    {
+      "name": "Kumena Merfolk",
+      "kind": "commander",
+      "cards": ["Kumena, Tyrant of Orazca", "card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10",
+        "card11", "card12", "card13", "card14", "card15", "card16", "card17", "card18", "card19", "card20"],
+      "commander": "Kumena, Tyrant of Orazca"
+    },
+    {
+      "name": "Golgari Midrange",
+      "kind": "standard",
+      "cards": ["card1", "card2", "card3"]
+    },
+    {
+      "name": "Rith Tokens",
+      "kind": "commander",
+      "cards": ["Rith, the Awakener","card1", "card2", "card3", "card4", "card5", "card6", "card7", "card8", "card9", "card10",
+        "card11", "card12", "card13", "card14", "card15", "card16", "card17", "card18", "card19", "card20"],
+      "commander": "Rith, the Awakener"
+    }
+  ]
 }
